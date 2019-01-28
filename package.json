@@ -1,0 +1,22 @@
+{
+  "name": "home-planning",
+  "version": "0.1.0",
+  "description": "Home planning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johanpoirier/home-planning.git"
+  },
+  "author": "Johan Poirier <johan.poirier@gmail.com> (https://twitter.com/johanpoirier)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johanpoirier/home-planning/issues"
+  },
+  "homepage": "https://github.com/johanpoirier/home-planning#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
