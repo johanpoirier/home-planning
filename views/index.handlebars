@@ -1,12 +1,12 @@
-<div class="">
-{{#each members}}
-  <div class="member">
-    {{name}}
-  </div>
-{{/each}}
-{{#each tasks}}
-    <div class="task">
-        {{name}}
+<div class="date">{{formattedDate}}</div>
+<section class="planning">
+    <h1 class="planning-title">Planning pour aujourd’hui</h1>
+    <div class="tasks">
+    {{#each plannedTasks}}
+        <div class="task">
+            <span>{{dateFormat date "HH[h]mm"}}</span>
+            {{member.name}} : {{task.name}}
+        </div>
+    {{/each}}
     </div>
-{{/each}}
-</div>
+</section>

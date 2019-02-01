@@ -1,6 +1,6 @@
 module.exports = class PlannedTask {
     static create(data) {
-        const {id, date, done, memberId, taskId} = data;
+        const {id, date, done} = data;
         return new PlannedTask(id, date, done);
     }
 

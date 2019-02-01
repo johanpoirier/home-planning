@@ -24,6 +24,15 @@ class Repository {
         });
     }
 
+    getMember(id) {
+        return new Promise(resolve => {
+            connection.query(`SELECT * FROM member WHERE id = ${parseInt(id, 10)}`, function (err, rows) {
+                if (err) throw err;
+                resolve(Member.create(rows.pop()));
+            });
+        });
+    }
+
     getTasks() {
         return new Promise(resolve => {
             connection.query('SELECT * FROM task', function (err, rows) {
@@ -33,11 +42,28 @@ class Repository {
         });
     }
 
-    getPlannedTasks() {
+    getTask(id) {
         return new Promise(resolve => {
-            connection.query('SELECT * FROM plannedTask', function (err, rows) {
+            connection.query(`SELECT * FROM task WHERE id = ${parseInt(id, 10)}`, function (err, rows) {
                 if (err) throw err;
-                resolve(rows.map(PlannedTask.create));
+                resolve(Task.create(rows.pop()));
+            });
+        });
+    }
+
+    getPlannedTasksByDate(date) {
+        return new Promise(resolve => {
+            connection.query(`SELECT * FROM plannedTask WHERE \`date\` like '${date}%'`, (err, rows) => {
+                if (err) throw err;
+
+                const plannedTasks = Promise.all(rows.map(async data => {
+                    const plannedTask = PlannedTask.create(data);
+                    plannedTask.member = await this.getMember(data['memberId']);
+                    plannedTask.task = await this.getTask(data['taskId']);
+                    return plannedTask;
+                }));
+
+                resolve(plannedTasks);
             });
         });
     }
