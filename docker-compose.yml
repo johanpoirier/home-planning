@@ -10,7 +10,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/usr/src/home-planning
+      - ./:/usr/src/app
       - ./docker/config/ssl:/etc/nginx/ssl
       - ./docker/config/site.conf:/etc/nginx/conf.d/site.conf
     depends_on:
@@ -24,9 +24,12 @@ services:
       - "3003:3003"
     volumes:
       - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm start
+    depends_on:
+      - "db"
     networks:
       - code-network
-    command: node /usr/src/app/index.js
 
   db:
     image: mysql:5.7
