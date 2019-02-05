@@ -1,23 +1,25 @@
 const mysql = require('mysql');
-const connection = mysql.createConnection({
+const dbParams = {
     host: 'db',
     user: 'planning',
     password: 'planning',
     database : 'planning'
-});
+};
 
 const Member = require('./models/Member');
 const Task = require('./models/Task');
 const PlannedTask = require('./models/PlannedTask');
 
 class Repository {
+
     constructor() {
-        this.cnx = connection.connect();
+        this.cnx = mysql.createConnection(dbParams);
+        this.cnx.connect();
     }
 
     getMembers() {
         return new Promise(resolve => {
-            connection.query('SELECT * FROM member', function (err, rows) {
+            this.cnx.query('SELECT * FROM member', function (err, rows) {
                 if (err) throw err;
                 resolve(rows.map(Member.create));
             });
@@ -26,7 +28,7 @@ class Repository {
 
     getMember(id) {
         return new Promise(resolve => {
-            connection.query(`SELECT * FROM member WHERE id = ${parseInt(id, 10)}`, function (err, rows) {
+            this.cnx.query(`SELECT * FROM member WHERE id = ${parseInt(id, 10)}`, function (err, rows) {
                 if (err) throw err;
                 resolve(Member.create(rows.pop()));
             });
@@ -35,7 +37,7 @@ class Repository {
 
     getTasks() {
         return new Promise(resolve => {
-            connection.query('SELECT * FROM task', function (err, rows) {
+            this.cnx.query('SELECT * FROM task', function (err, rows) {
                 if (err) throw err;
                 resolve(rows.map(Task.create));
             });
@@ -44,7 +46,7 @@ class Repository {
 
     getTask(id) {
         return new Promise(resolve => {
-            connection.query(`SELECT * FROM task WHERE id = ${parseInt(id, 10)}`, function (err, rows) {
+            this.cnx.query(`SELECT * FROM task WHERE id = ${parseInt(id, 10)}`, function (err, rows) {
                 if (err) throw err;
                 resolve(Task.create(rows.pop()));
             });
@@ -53,7 +55,7 @@ class Repository {
 
     getPlannedTasksByDate(date) {
         return new Promise(resolve => {
-            connection.query(`SELECT * FROM plannedTask WHERE \`date\` like '${date}%'`, (err, rows) => {
+            this.cnx.query(`SELECT * FROM plannedTask WHERE \`date\` like '${date}%'`, (err, rows) => {
                 if (err) throw err;
 
                 const plannedTasks = Promise.all(rows.map(async data => {
@@ -69,7 +71,7 @@ class Repository {
     }
 
     shutdown() {
-        connection.end();
+        this.cnx.end();
     }
 }
 

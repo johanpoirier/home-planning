@@ -4,8 +4,11 @@
     <div class="tasks">
     {{#each plannedTasks}}
         <div class="task">
-            <span>{{dateFormat date "HH[h]mm"}}</span>
-            {{member.name}} : {{task.name}}
+            <img class="task-member" src="data:image/jpeg;charset=utf-8;base64,{{member.avatar}}" alt="" />
+            <div class="task-details">
+                <span>{{task.periodName}}</span>
+                {{task.name}}
+            </div>
         </div>
     {{/each}}
     </div>
