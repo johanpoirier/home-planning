@@ -52,15 +52,16 @@ INSERT INTO `member` (`id`, `email`, `name`) VALUES (1, 'noah@planning.fr', 'Noa
 INSERT INTO `member` (`id`, `email`, `name`) VALUES (2, 'ely@planning.fr', 'Ely');
 INSERT INTO `member` (`id`, `email`, `name`) VALUES (3, 'ian@planning.fr', 'Ian');
 
+
 INSERT INTO `task` (`id`, `name`, `description`, `period`) VALUES (1, 'Mettre le couvert', '', 2);
 INSERT INTO `task` (`id`, `name`, `description`, `period`) VALUES (2, 'Ranger les marchepieds', '', 0);
 INSERT INTO `task` (`id`, `name`, `description`, `period`) VALUES (3, 'Pyjama', '', 2);
 
-INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (1, '2019-02-01', 1, 1);
-INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (2, '2019-02-02', 2, 1);
-INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (3, '2019-02-03', 3, 1);
-INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (4, '2019-02-04', 1, 1);
-INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (5, '2019-02-05', 1, 1);
+INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (1, '2019-02-05', 1, 2);
+INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (2, '2019-02-05', 1, 3);
+INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (3, '2019-02-05', 1, 1);
+INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (4, '2019-02-06', 1, 2);
+INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (5, '2019-02-06', 1, 3);
 INSERT INTO `plannedTask` (`id`, `date`, `memberId`, `taskId`) VALUES (6, '2019-02-06', 1, 1);
 
 

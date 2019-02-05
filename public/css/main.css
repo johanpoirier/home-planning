@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'Komikax';
+    src: url('../fonts/KOMIKAX.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    font-family: 'Komikax', sans-serif;
+    font-size: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, #3479a9, #4845a9);
+    color: #eeeeee;
+    width: 100%;
+}
+
+.date {
+    padding: 0.1em 0.3em;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.planning-title {
+    font-size: 1.5em;
+    letter-spacing: 0.07em;
+    margin: 0;
+    padding: 0.1em 0 2em;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+
+.planning {
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    padding: 4em 0;
+    width: 100%;
+}
+
+.tasks-period {
+    background-color: white;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.6);
+    color: black;
+    font-size: 1.2em;
+    letter-spacing: 0.04em;
+    margin: 0 0 1em 0;
+    padding: 0.3em 0.8em;
+}
+
+.tasks {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.task {
+    background-color: white;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.6);
+    color: #000;
+    display: flex;
+    height: 10em;
+    margin: 1em;
+    width: 16em;
+}
+
+.task-member {
+    height: 100%;
+    width: auto;
+}
+
+.task-details {
+    align-items: center;
+    color: #373737;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}

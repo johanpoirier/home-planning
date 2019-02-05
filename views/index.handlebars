@@ -1,12 +1,34 @@
 <div class="date">{{formattedDate}}</div>
+<h1 class="planning-title">Planning pour aujourd’hui</h1>
 <section class="planning">
-    <h1 class="planning-title">Planning pour aujourd’hui</h1>
     <div class="tasks">
-    {{#each plannedTasks}}
+        <h2 class="tasks-period">Matin</h2>
+    {{#each morningTasks}}
         <div class="task">
-            <img class="task-member" src="data:image/jpeg;charset=utf-8;base64,{{member.avatar}}" alt="" />
+            <img class="task-member" src="data:image/jpeg;charset=utf-8;base64,{{member.avatar}}" alt=""/>
             <div class="task-details">
-                <span>{{task.periodName}}</span>
+                {{task.name}}
+            </div>
+        </div>
+    {{/each}}
+    </div>
+    <div class="tasks">
+    {{#each midiTasks}}
+        <h2 class="tasks-period">Midi</h2>
+        <div class="task">
+            <img class="task-member" src="data:image/jpeg;charset=utf-8;base64,{{member.avatar}}" alt=""/>
+            <div class="task-details">
+                {{task.name}}
+            </div>
+        </div>
+    {{/each}}
+    </div>
+    <div class="tasks">
+        <h2 class="tasks-period">Soir</h2>
+    {{#each eveningTasks}}
+        <div class="task">
+            <img class="task-member" src="data:image/jpeg;charset=utf-8;base64,{{member.avatar}}" alt=""/>
+            <div class="task-details">
                 {{task.name}}
             </div>
         </div>
