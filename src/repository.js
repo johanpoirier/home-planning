@@ -55,7 +55,7 @@ class Repository {
 
     getPlannedTasksByDate(date) {
         return new Promise(resolve => {
-            this.cnx.query(`SELECT * FROM plannedTask WHERE \`date\` like '${date}%'`, (err, rows) => {
+            this.cnx.query(`SELECT * FROM plannedTask WHERE \`date\` like '${date}%' ORDER BY taskId`, (err, rows) => {
                 if (err) throw err;
 
                 const plannedTasks = Promise.all(rows.map(async data => {

@@ -6,8 +6,8 @@ const periods = {
 
 module.exports = class Task {
     static create(data) {
-        const {id, name, description, period} = data;
-        return new Task(id, name, description, period);
+        const {id, name, description, period, icon, color} = data;
+        return new Task(id, name, description, period, icon, color);
     }
 
     static get periods() {
@@ -18,11 +18,13 @@ module.exports = class Task {
         }
     }
 
-    constructor(id, name, description, period) {
+    constructor(id, name, description, period, icon, color) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.period = period;
+        this.icon = icon ? icon.toString('base64') : false;
+        this.color = color;
     }
 
     get periodName() {

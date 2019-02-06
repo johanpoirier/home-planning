@@ -35,11 +35,21 @@ app.get('/', async (req, res) => {
 
   const todayTasks = await repository.getPlannedTasksByDate(today);
 
-  const morningTasks = todayTasks.filter(t => t.task.period === Task.periods.MORNING);
-  const midiTasks = todayTasks.filter(t => t.task.period === Task.periods.MIDI);
-  const eveningTasks = todayTasks.filter(t => t.task.period === Task.periods.EVENING);
+  const periods = [
+    {
+      title: 'Matin',
+      tasks: todayTasks.filter(t => t.task.period === Task.periods.MORNING)
+    },
+    {
+      title: 'Midi',
+      tasks: todayTasks.filter(t => t.task.period === Task.periods.MIDI)
+    },
+    {
+      title: 'Soir',
+      tasks: todayTasks.filter(t => t.task.period === Task.periods.EVENING)
+    }];
 
-  res.render('index', {formattedDate, morningTasks, midiTasks, eveningTasks});
+  res.render('index', {formattedDate, periods: periods.filter(p => p.tasks.length > 0)});
 });
 
 app.listen(3003, () => {

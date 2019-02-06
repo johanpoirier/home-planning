@@ -7,7 +7,7 @@
 
 html, body {
     font-family: 'Komikax', sans-serif;
-    font-size: 100%;
+    font-size: 0.8rem;
     height: 100%;
     margin: 0;
 }
@@ -25,6 +25,7 @@ body {
 }
 
 .date {
+    font-size: 1em;
     padding: 0.1em 0.3em;
     position: fixed;
     right: 0;
@@ -32,7 +33,7 @@ body {
 }
 
 .planning-title {
-    font-size: 1.5em;
+    font-size: 1.6em;
     letter-spacing: 0.07em;
     margin: 0;
     padding: 0.1em 0 2em;
@@ -52,13 +53,15 @@ body {
 }
 
 .tasks-period {
-    background-color: white;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.6);
+    background-color: yellow;
+    box-shadow: 0.1em 0.2em 0.2em rgba(0, 0, 0, 0.6);
     color: black;
     font-size: 1.2em;
     letter-spacing: 0.04em;
     margin: 0 0 1em 0;
-    padding: 0.3em 0.8em;
+    min-width: 6em;
+    padding: 0.3em 0.8em 0.5em 1em;
+    text-align: center;
 }
 
 .tasks {
@@ -70,12 +73,14 @@ body {
 
 .task {
     background-color: white;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.6);
+    border-bottom-width: 0;
+    border-bottom-style: solid;
+    box-shadow: 0.1em 0.2em 0.2em rgba(0, 0, 0, 0.6);
     color: #000;
     display: flex;
-    height: 10em;
+    height: 7em;
     margin: 1em;
-    width: 16em;
+    width: 15em;
 }
 
 .task-member {
@@ -89,6 +94,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
     text-align: center;
     width: 100%;
+}
+
+.task-icon {
+    height: auto;
+    margin-bottom: 0.4em;
+    max-height: 40%;
+    max-width: 80%;
 }
