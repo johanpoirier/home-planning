@@ -105,3 +105,59 @@ body {
     max-height: 40%;
     max-width: 80%;
 }
+
+.admin {
+    display: grid;
+    font-size: 1rem;
+    grid-template-columns: 1fr 2fr 2fr 2fr;
+    grid-template-rows: [row1-start] 8vh [row1-end] 8vh [third-line] auto [last-line];
+    height: 100vh;
+}
+
+.admin > * {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.admin .admin-date {
+    grid-column: 1 / 5;
+    margin: 0.5em 0 1.5em;
+}
+
+.admin-period-morning {
+    grid-column: 2 / 3;
+}
+
+.admin-period-noon {
+    grid-column: 3 / 4;
+}
+
+.admin-period-evening {
+    grid-column: 4 / 5;
+}
+
+.admin-member .task-member {
+    box-shadow: 0.1em 0.2em 0.2em rgba(0, 0, 0, 0.6);
+    margin: 1em 0;
+    max-height: 10em;
+}
+
+.admin-tasks {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-task {
+    background-color: white;
+    box-shadow: 0.1em 0.2em 0.2em rgba(0, 0, 0, 0.6);
+    color: black;
+    cursor: pointer;
+    font-size: 0.8em;
+    letter-spacing: 0.04em;
+    margin: 0 0 1em 0;
+    min-width: 15em;
+    padding: 0.3em 0.8em 0.5em 1em;
+    text-align: center;
+}

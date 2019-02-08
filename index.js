@@ -42,7 +42,7 @@ app.get('/', async (req, res) => {
     },
     {
       title: 'Midi',
-      tasks: todayTasks.filter(t => t.task.period === Task.periods.MIDI)
+      tasks: todayTasks.filter(t => t.task.period === Task.periods.NOON)
     },
     {
       title: 'Soir',
@@ -50,6 +50,21 @@ app.get('/', async (req, res) => {
     }];
 
   res.render('index', {formattedDate, periods: periods.filter(p => p.tasks.length > 0)});
+});
+
+app.get('/admin', async (req, res) => {
+  const formattedDate = moment().format('dddd DD MMMM YYYY');
+
+  const tasks = await repository.getTasks();
+  const members = await repository.getMembers();
+
+  res.render('admin', {
+    formattedDate,
+    members,
+    morningTasks: tasks.filter(t => t.period === Task.periods.MORNING),
+    noonTasks: tasks.filter(t => t.period === Task.periods.NOON),
+    eveningTasks: tasks.filter(t => t.period === Task.periods.EVENING)
+  });
 });
 
 app.listen(3003, () => {

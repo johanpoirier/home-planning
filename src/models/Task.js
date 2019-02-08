@@ -13,7 +13,7 @@ module.exports = class Task {
     static get periods() {
         return {
             MORNING: 0,
-            MIDI: 1,
+            NOON: 1,
             EVENING: 2
         }
     }

@@ -1,0 +1,31 @@
+<section class="admin">
+    <h1 class="admin-date">{{formattedDate}}</h1>
+
+    <div class="admin-period-morning"><span class="tasks-period">Matin</span></div>
+    <div class="admin-period-noon"><span class="tasks-period">Midi</span></div>
+    <div class="admin-period-evening"><span class="tasks-period">Soir</span></div>
+
+    {{#each members}}
+        <div class="admin-member">
+            <img class="task-member" src="data:image/jpeg;charset=utf-8;base64,{{avatar}}" alt="{{name}}"/>
+        </div>
+
+        <div class="admin-tasks">
+        {{#each ../morningTasks}}
+            <span class="admin-task">{{name}}</span>
+        {{/each}}
+        </div>
+
+        <div class="admin-tasks">
+        {{#each ../noonTasks}}
+            <span class="admin-task">{{name}}</span>
+        {{/each}}
+        </div>
+
+        <div class="admin-tasks">
+        {{#each ../eveningTasks}}
+            <span class="admin-task">{{name}}</span>
+        {{/each}}
+        </div>
+    {{/each}}
+</section>
