@@ -4,7 +4,7 @@
   "description": "Home planning",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node --inspect=0.0.0.0 index"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/johanpoirier/home-planning#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "handlebars-dateformat": "^1.1.1",

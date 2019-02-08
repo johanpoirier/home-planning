@@ -151,13 +151,19 @@ body {
 
 .admin-task {
     background-color: white;
+    border: 0;
     box-shadow: 0.1em 0.2em 0.2em rgba(0, 0, 0, 0.6);
     color: black;
     cursor: pointer;
+    font-family: inherit;
     font-size: 0.8em;
     letter-spacing: 0.04em;
     margin: 0 0 1em 0;
     min-width: 15em;
     padding: 0.3em 0.8em 0.5em 1em;
     text-align: center;
+}
+
+.admin-task-active {
+    background-color: #adff64;
 }

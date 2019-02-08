@@ -11,21 +11,28 @@
         </div>
 
         <div class="admin-tasks">
-        {{#each ../morningTasks}}
-            <span class="admin-task">{{name}}</span>
+        {{#each morningTasks}}
+            <button class="admin-task {{#if active}}admin-task-active{{/if}}" data-taskId="{{id}}" data-memberId="{{../id}}" data-active="{{active}}">
+                {{name}}
+            </button>
         {{/each}}
         </div>
 
         <div class="admin-tasks">
-        {{#each ../noonTasks}}
-            <span class="admin-task">{{name}}</span>
+        {{#each noonTasks}}
+            <button class="admin-task {{#if active}}admin-task-active{{/if}}" data-taskId="{{id}}" data-memberId="{{../id}}" data-active="{{active}}">
+                {{name}}
+            </button>
         {{/each}}
         </div>
 
         <div class="admin-tasks">
-        {{#each ../eveningTasks}}
-            <span class="admin-task">{{name}}</span>
+        {{#each eveningTasks}}
+            <button class="admin-task {{#if active}}admin-task-active{{/if}}" data-taskId="{{id}}" data-memberId="{{../id}}" data-active="{{active}}">
+                {{name}}
+            </button>
         {{/each}}
         </div>
     {{/each}}
 </section>
+<script src="js/index.js" type="module"></script>

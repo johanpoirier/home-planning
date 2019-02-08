@@ -22,6 +22,7 @@ services:
     image: node:8.15-stretch
     ports:
       - "3003:3003"
+      - "9229:9229"
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app

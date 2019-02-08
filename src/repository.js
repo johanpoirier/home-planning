@@ -55,10 +55,10 @@ class Repository {
 
     getPlannedTasksByDate(date) {
         return new Promise(resolve => {
-            this.cnx.query(`SELECT * FROM plannedTask WHERE \`date\` like '${date}%' ORDER BY taskId`, (err, rows) => {
+            this.cnx.query(`SELECT * FROM plannedTask WHERE \`date\` like '${date}%' ORDER BY taskId`, (err, results) => {
                 if (err) throw err;
 
-                const plannedTasks = Promise.all(rows.map(async data => {
+                const plannedTasks = Promise.all(results.map(async data => {
                     const plannedTask = PlannedTask.create(data);
                     plannedTask.member = await this.getMember(data['memberId']);
                     plannedTask.task = await this.getTask(data['taskId']);
@@ -66,6 +66,26 @@ class Repository {
                 }));
 
                 resolve(plannedTasks);
+            });
+        });
+    }
+
+    addPlannedTask(taskId, memberId, date) {
+        return new Promise(resolve => {
+            this.cnx.query('INSERT INTO plannedTask SET ?', {taskId, memberId, date}, (err, results) => {
+                if (err) throw err;
+
+                console.log(results.insertId);
+                resolve();
+            });
+        });
+    }
+
+    removePlannedTask(taskId, memberId, date) {
+        return new Promise(resolve => {
+            this.cnx.query('DELETE FROM plannedTask WHERE taskId = ? AND memberId = ? AND date = ?', [taskId, memberId, date], err => {
+                if (err) throw err;
+                resolve();
             });
         });
     }

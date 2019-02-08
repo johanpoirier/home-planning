@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `task` (
 
 CREATE TABLE IF NOT EXISTS `plannedTask` (
   `id` int(11) NOT NULL auto_increment,
-  `date` date NOT NULL,
+  `date` date NOT NULL DEFAULT 0,
   `memberId` smallint(6) NOT NULL,
   `taskId` smallint(6) NOT NULL,
   `done` tinyint(1) NOT NULL DEFAULT 0,
