@@ -36,18 +36,16 @@ const Task = require('./src/models/Task');
 app.get('/', async (req, res) => {
   const formattedDate = moment().format('dddd DD MMMM YYYY');
 
-  const tasks = await repository.getTasks();
   const members = await repository.getMembers();
 
   const today = moment().format('YYYY-MM-DD');
   const todayTasks = await repository.getPlannedTasksByDate(today);
 
   members.forEach(member => {
-    const memberTaskIds = todayTasks.filter(t => t.member.id === member.id).map(t => t.task.id);
-    const memberTasks = tasks.map(task => ({...task, active: memberTaskIds.includes(task.id)}));
-    member.morningTasks = memberTasks.filter(t => t.period === Task.periods.MORNING);
-    member.noonTasks = memberTasks.filter(t => t.period === Task.periods.NOON);
-    member.eveningTasks = memberTasks.filter(t => t.period === Task.periods.EVENING);
+    const memberTasks = todayTasks.filter(t => t.member.id === member.id);
+    member.morningTasks = memberTasks.filter(mt => mt.task.period === Task.periods.MORNING);
+    member.noonTasks = memberTasks.filter(mt => mt.task.period === Task.periods.NOON);
+    member.eveningTasks = memberTasks.filter(mt => mt.task.period === Task.periods.EVENING);
   });
 
   res.render('index', {

@@ -12,10 +12,10 @@
 
         <div class="planning-tasks">
         {{#each morningTasks}}
-            <div class="task" style="border-color:{{color}};">
-                {{#if icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{icon}}" alt=""/>{{/if}}
+            <div class="task" style="border-color:{{task.color}};">
+                {{#if task.icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{task.icon}}" alt=""/>{{/if}}
                 <div class="task-details">
-                    {{name}}
+                    {{task.name}}
                 </div>
             </div>
         {{/each}}
@@ -23,10 +23,10 @@
 
         <div class="planning-tasks">
         {{#each noonTasks}}
-            <div class="task" style="border-color:{{color}};">
-                {{#if icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{icon}}" alt=""/>{{/if}}
+            <div class="task" style="border-color:{{task.color}};">
+                {{#if task.icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{task.icon}}" alt=""/>{{/if}}
                 <div class="task-details">
-                    {{name}}
+                    {{task.name}}
                 </div>
             </div>
         {{/each}}
@@ -34,10 +34,10 @@
 
         <div class="planning-tasks">
         {{#each eveningTasks}}
-            <div class="task" style="border-color:{{color}};">
-                {{#if icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{icon}}" alt=""/>{{/if}}
+            <div class="task" style="border-color:{{task.color}};">
+                {{#if task.icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{task.icon}}" alt=""/>{{/if}}
                 <div class="task-details">
-                    {{name}}
+                    {{task.name}}
                 </div>
             </div>
         {{/each}}
