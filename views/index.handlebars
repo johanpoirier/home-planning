@@ -1,18 +1,46 @@
 <div class="date">{{formattedDate}}</div>
-<h1 class="planning-title">Planning pour aujourd’hui</h1>
+
 <section class="planning">
-{{#each periods}}
-    <div class="tasks">
-        <h2 class="tasks-period">{{title}}</h2>
-    {{#each tasks}}
-        <div class="task" style="border-color:{{task.color}};">
-            <img class="task-member" src="data:image/jpeg;charset=utf-8;base64,{{member.avatar}}" alt=""/>
-            <div class="task-details">
-                {{#if task.icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{task.icon}}" alt=""/>{{/if}}
-                {{task.name}}
+    <div class="planning-period-morning"><span class="tasks-period">Matin</span></div>
+    <div class="planning-period-noon"><span class="tasks-period">Midi</span></div>
+    <div class="planning-period-evening"><span class="tasks-period">Soir</span></div>
+
+    {{#each members}}
+        <div class="planning-member">
+            <img class="task-member" src="data:image/jpeg;charset=utf-8;base64,{{avatar}}" alt="{{name}}"/>
+        </div>
+
+        <div class="planning-tasks">
+        {{#each morningTasks}}
+            <div class="task" style="border-color:{{color}};">
+                {{#if icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{icon}}" alt=""/>{{/if}}
+                <div class="task-details">
+                    {{name}}
+                </div>
             </div>
+        {{/each}}
+        </div>
+
+        <div class="planning-tasks">
+        {{#each noonTasks}}
+            <div class="task" style="border-color:{{color}};">
+                {{#if icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{icon}}" alt=""/>{{/if}}
+                <div class="task-details">
+                    {{name}}
+                </div>
+            </div>
+        {{/each}}
+        </div>
+
+        <div class="planning-tasks">
+        {{#each eveningTasks}}
+            <div class="task" style="border-color:{{color}};">
+                {{#if icon}}<img class="task-icon" src="data:image/jpeg;charset=utf-8;base64,{{icon}}" alt=""/>{{/if}}
+                <div class="task-details">
+                    {{name}}
+                </div>
+            </div>
+        {{/each}}
         </div>
     {{/each}}
-    </div>
-{{/each}}
 </section>

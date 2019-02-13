@@ -34,26 +34,26 @@ const repository = require('./src/repository');
 const Task = require('./src/models/Task');
 
 app.get('/', async (req, res) => {
-  const today = moment().format('YYYY-MM-DD');
   const formattedDate = moment().format('dddd DD MMMM YYYY');
 
+  const tasks = await repository.getTasks();
+  const members = await repository.getMembers();
+
+  const today = moment().format('YYYY-MM-DD');
   const todayTasks = await repository.getPlannedTasksByDate(today);
 
-  const periods = [
-    {
-      title: 'Matin',
-      tasks: todayTasks.filter(t => t.task.period === Task.periods.MORNING)
-    },
-    {
-      title: 'Midi',
-      tasks: todayTasks.filter(t => t.task.period === Task.periods.NOON)
-    },
-    {
-      title: 'Soir',
-      tasks: todayTasks.filter(t => t.task.period === Task.periods.EVENING)
-    }];
+  members.forEach(member => {
+    const memberTaskIds = todayTasks.filter(t => t.member.id === member.id).map(t => t.task.id);
+    const memberTasks = tasks.map(task => ({...task, active: memberTaskIds.includes(task.id)}));
+    member.morningTasks = memberTasks.filter(t => t.period === Task.periods.MORNING);
+    member.noonTasks = memberTasks.filter(t => t.period === Task.periods.NOON);
+    member.eveningTasks = memberTasks.filter(t => t.period === Task.periods.EVENING);
+  });
 
-  res.render('index', {formattedDate, periods: periods.filter(p => p.tasks.length > 0)});
+  res.render('index', {
+    formattedDate,
+    members
+  });
 });
 
 app.get('/admin', async (req, res) => {

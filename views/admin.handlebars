@@ -1,34 +1,34 @@
-<section class="admin">
-    <h1 class="admin-date">{{formattedDate}}</h1>
+<h1 class="date">{{formattedDate}}</h1>
 
-    <div class="admin-period-morning"><span class="tasks-period">Matin</span></div>
-    <div class="admin-period-noon"><span class="tasks-period">Midi</span></div>
-    <div class="admin-period-evening"><span class="tasks-period">Soir</span></div>
+<section class="planning">
+    <div class="planning-period-morning"><span class="tasks-period">Matin</span></div>
+    <div class="planning-period-noon"><span class="tasks-period">Midi</span></div>
+    <div class="planning-period-evening"><span class="tasks-period">Soir</span></div>
 
     {{#each members}}
-        <div class="admin-member">
+        <div class="planning-member">
             <img class="task-member" src="data:image/jpeg;charset=utf-8;base64,{{avatar}}" alt="{{name}}"/>
         </div>
 
-        <div class="admin-tasks">
+        <div class="planning-tasks">
         {{#each morningTasks}}
-            <button class="admin-task {{#if active}}admin-task-active{{/if}}" data-taskId="{{id}}" data-memberId="{{../id}}" data-active="{{active}}">
+            <button class="planning-task {{#if active}}planning-task-active{{/if}}" data-taskId="{{id}}" data-memberId="{{../id}}" data-active="{{active}}">
                 {{name}}
             </button>
         {{/each}}
         </div>
 
-        <div class="admin-tasks">
+        <div class="planning-tasks">
         {{#each noonTasks}}
-            <button class="admin-task {{#if active}}admin-task-active{{/if}}" data-taskId="{{id}}" data-memberId="{{../id}}" data-active="{{active}}">
+            <button class="planning-task {{#if active}}planning-task-active{{/if}}" data-taskId="{{id}}" data-memberId="{{../id}}" data-active="{{active}}">
                 {{name}}
             </button>
         {{/each}}
         </div>
 
-        <div class="admin-tasks">
+        <div class="planning-tasks">
         {{#each eveningTasks}}
-            <button class="admin-task {{#if active}}admin-task-active{{/if}}" data-taskId="{{id}}" data-memberId="{{../id}}" data-active="{{active}}">
+            <button class="planning-task {{#if active}}admin-task-active{{/if}}" data-taskId="{{id}}" data-memberId="{{../id}}" data-active="{{active}}">
                 {{name}}
             </button>
         {{/each}}

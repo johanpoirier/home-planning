@@ -72,10 +72,8 @@ class Repository {
 
     addPlannedTask(taskId, memberId, date) {
         return new Promise(resolve => {
-            this.cnx.query('INSERT INTO plannedTask SET ?', {taskId, memberId, date}, (err, results) => {
+            this.cnx.query('INSERT INTO plannedTask SET ?', {taskId, memberId, date}, err => {
                 if (err) throw err;
-
-                console.log(results.insertId);
                 resolve();
             });
         });
